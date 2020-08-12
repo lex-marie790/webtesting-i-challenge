@@ -16,8 +16,16 @@ function success(item) {
 };
 
 function fail(item) {
-  return { ...item };
-}
+  const failItem = item;
+  if (failItem.enhancement < 15) {
+    failItem.durability = failItem.durability - 5;
+  } else {
+    failItem.durability = failItem.durability - 10
+  } if (failItem.enhancement > 16) {
+    failItem.enhancement = failItem.enhancement - 1
+  }
+  return {...failItem};
+};
 
 function repair(item) {
   const repairItem = item;
@@ -26,5 +34,9 @@ function repair(item) {
 };
 
 function get(item) {
-  return { ...item };
-}
+  const getItem = item;
+  if(getItem.enhancement > 0) {
+    getItem.name = `[+${getItem.enhancement}] ${getItem.name}`
+  }
+  return { ...getItem }; 
+};

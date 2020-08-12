@@ -3,7 +3,7 @@ const {success, fail, repair, get} = require('./enhancer.js');
 const swords = {
     name: 'sword',
     durability: 50,
-    enhancement: 15,
+    enhancement: 14,
 };
 
 const axes = {
@@ -22,6 +22,12 @@ const lance = {
     name: 'lance',
     durability: 5,
     enhancement: 5,
+};
+
+const arrow = {
+    name: 'arrow',
+    durability: 35,
+    enhancement: 25,
 };
 
 // test run
@@ -63,3 +69,21 @@ describe('success', () => {
         });
     });
 });
+
+// fail test
+describe('fail', () => {
+    it('enhancement less than 15, decrease durability 5', () => {
+        expect(fail(swords)).toEqual({
+            ...swords,
+            durability: 95,
+            enhancement: 14,
+        });
+    });
+    it('decrease durability by 10, decrease enhancement by 1', () => {
+        expect(fail(arrow)).toEqual({
+            ...arrow,
+            durability: 25,
+            enhancement: 24,
+        })
+    });
+})

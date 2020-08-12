@@ -6,7 +6,7 @@ module.exports = {
 };
 
 function success(item) {
-  return { ...item };
+
 }
 
 function fail(item) {
@@ -14,7 +14,9 @@ function fail(item) {
 }
 
 function repair(item) {
-  return { ...item };
+  const repairItem = item;
+  repairItem.durability = 100;
+  return { ...repairItem };
 }
 
 function get(item) {

@@ -19,7 +19,7 @@ const wands = {
 };
 
 const lance = {
-    name: 'axe',
+    name: 'lance',
     durability: 5,
     enhancement: 5,
 };
@@ -46,3 +46,20 @@ describe('enhancer methods', () => {
         })
     })
 })
+
+// success test
+describe('success', () => {
+    it('adds enhancement less than 20', () => {
+        expect(lance.enhancement).toBe(5);
+        expect(success(lance)).toEqual({
+            ...lance,
+            enhancement:6
+        });
+    });
+    it('enhancement full', () => {
+        expect(axes.enhancement).toBe(20);
+        expect(success(axes)).toEqual({
+            ...axes
+        });
+    });
+});
